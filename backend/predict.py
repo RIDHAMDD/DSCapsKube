@@ -1,23 +1,27 @@
 import sys
 import joblib
 import string
+
 # import nltk
 # from nltk.tokenize import word_tokenize
 # from nltk.stem import PorterStemmer
 # from nltk.corpus import words
 
+
 # Function to remove unwanted tags like newline and single quote
 def remove_tags(text):
-    tags = ['\n', '\'']
+    tags = ["\n", "'"]
     for tag in tags:
-        text = text.replace(tag, '')
+        text = text.replace(tag, "")
     return text
+
 
 # Function to remove punctuation
 def remove_punc(text):
     new_text = [x for x in text if x not in string.punctuation]
-    new_text = ''.join(new_text)
+    new_text = "".join(new_text)
     return new_text
+
 
 # Function to correct text (stemming and checking for valid English words)
 # def correct_text(text):
@@ -39,24 +43,19 @@ cleaned_text = remove_punc(cleaned_text)
 
 # Load models
 models = {
-    "Multinomial Naive Bayes": "models/naive_bayes_model.pkl",
-     "Logistic Regression": "models/logistic_regression_model.pkl",
-    # "Gradient Boost": "models/gradient_boost.pkl",
-    # "Random Forest": "models/random_forest.pkl",
-    # "KNN": "models/knn.pkl",
-    # "Neural Network": "models/neural_network.pkl",
+    "Multinomial Naive Bayes": "models/nb.pkl",
 }
 
 # Predict using the selected model
 if model_name in models:
-    #print("Printing model Path")
-    #print(models[model_name])
+    # print("Printing model Path")
+    # print(models[model_name])
     model = joblib.load(models[model_name])  # Using joblib instead of pickle
     prediction = model.predict([cleaned_text])
-    if(prediction[0] == 0.0):
+    if prediction[0] == 0.0:
         print("This is a Human text")
     else:
         print("This is a AI text")
-    
+
 else:
     print("Invalid Model")

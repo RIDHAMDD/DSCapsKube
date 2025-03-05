@@ -6,28 +6,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const models = [
-  "Multinomial Naive Bayes",
-  "Logistic Regression",
-  "Gradient Boost",
-  "Random Forest",
-  "KNN",
-  "Neural Network",
-];
-
-// Endpoint to get available models
-app.get("/models", (req, res) => {
-  res.json({ models });
-});
 app.post("/predict", (req, res) => {
   const { model_name, content } = req.body;
   console.log("Received prediction request for model:", model_name);
   console.log("Content received:", content);
-
-  if (!models.includes(model_name)) {
-    console.log("Invalid model selection");
-    return res.status(400).json({ error: "Invalid model selection" });
-  }
 
   // Run Python script
   const python = spawn("python3", ["predict.py", model_name, content]);
