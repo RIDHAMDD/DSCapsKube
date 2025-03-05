@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@300;400;500&display=swap");
+
+body {
+  background-color: #121212;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.app-container {
+  width: 90%;
+  max-width: 600px;
+  background: #1e1e1e;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+/* Header Styling */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+  /* Ensures dropdown appears above other content */
+}
+
+.header-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: gold;
+}
+
+.team-names {
+  font-size: 16px;
+  color: #bbb;
+}
+
+/* Project Links Button */
+.links-container {
+  margin-top: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.links-btn {
+  background: linear-gradient(90deg, #ff9f00, #ff2d55);
+  color: white;
+  padding: 10px 15px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.links-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(255, 47, 87, 0.5);
+}
+
+/* Fixed Dropdown (No Overlapping) */
+.dropdown {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2c2c2c;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  width: 220px;
+  text-align: left;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.dropdown a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 8px 10px;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.dropdown a:hover {
+  background: #3a3a3a;
+  border-radius: 4px;
+}
+
+/* Show Dropdown When Active */
+.show-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(5px);
+}
+
+/* Main Content Styling */
+.title {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: black;
+  background: linear-gradient(to right, gold, white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.content-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.dropdown-input {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #2c2c2c;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.text-area {
+  width: 100%;
+  min-height: 120px;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #fff;
+  background: #2c2c2c;
+  outline: none;
+  resize: none;
+}
+
+.predict-btn {
+  background: linear-gradient(90deg, #ff9f00, #ff2d55);
+  color: #fff;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.predict-btn:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+.result-text {
+  font-size: 18px;
+  font-weight: 500;
+  color: gold;
+  margin-top: 15px;
+}
