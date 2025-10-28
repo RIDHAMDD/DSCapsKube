@@ -41,6 +41,11 @@ cleaned_text = remove_tags(content)
 cleaned_text = remove_punc(cleaned_text)
 # cleaned_text = correct_text(cleaned_text)
 
+word_count = len(cleaned_text.split())
+if word_count < 15:
+    print(f"Text too short ({word_count} words). Please enter at least 15 words for reliable prediction.")
+    sys.exit()
+    
 # Load models
 models = {
     "Multinomial Naive Bayes": "models/nb.pkl",

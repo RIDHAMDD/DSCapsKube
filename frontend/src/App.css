@@ -1,241 +1,197 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@300;400;500&display=swap");
-
-body {
-  background-color: #121212;
-  color: #fff;
-  font-family: "Roboto", sans-serif;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100vh;
-  overflow-y: auto;
-}
-
-/* Main App Container */
+/* === GENERAL APP CONTAINER === */
 .app-container {
-  width: 90%;
-  max-width: 1800px;
-  background: #1e1e1e;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
-  text-align: center;
-  margin-top: 20px;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
 }
 
-/* Sticky Header */
+.app-container1 {
+  margin: 0 auto;
+  padding: 30px 20px;
+  font-family: "Poppins", sans-serif;
+  color: #f1f1f1;
+  background: linear-gradient(135deg, #1f0033, #3b0066 60%, #21002a);
+  min-height: 100vh;
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.6);
+}
+/* === HEADER === */
 .header {
   text-align: center;
-  margin-bottom: 20px;
-  position: sticky;
-  top: 0;
-  background: #1e1e1e;
-  padding: 10px;
-  z-index: 100;
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  margin-bottom: 30px;
+  padding: 20px 0;
+  border-bottom: 2px solid rgba(255, 215, 0, 0.3);
 }
 
-/* Header Title */
 .header-title {
-  font-size: 22px;
-  font-weight: bold;
-  color: gold;
+  font-size: 1.9rem;
+  font-weight: 600;
+  background: linear-gradient(to right, #ffcc00, #ffea80);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
-/* Team Names */
 .team-names {
-  font-size: 16px;
-  color: #bbb;
+  color: #e2d1f9;
+  font-size: 0.95rem;
 }
 
-/* Project Links Button */
-.links-container {
-  margin-top: 10px;
-  position: relative;
-  display: inline-block;
+/* === MODEL INFO === */
+.model-info {
+  text-align: center;
+  font-weight: 500;
+  color: #cdb3ff;
+  margin-bottom: 15px;
 }
 
-.links-btn {
-  background: linear-gradient(90deg, #ff9f00, #ff2d55);
+/* === COLLAPSIBLE PRESET SECTION === */
+.preset-container {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.toggle-btn {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
   color: white;
-  padding: 10px 15px;
-  font-size: 14px;
+  padding: 12px 20px;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
 }
 
-.links-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(255, 47, 87, 0.5);
+.toggle-btn:hover {
+  background: linear-gradient(90deg, #8a2be2, #4a00e0);
+  transform: translateY(-2px);
 }
 
-/* Dropdown Styling */
-.dropdown {
-  position: absolute;
-  top: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #2c2c2c;
-  border-radius: 6px;
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
-  width: 220px;
+/* === PRESET CONTENT === */
+.preset-content {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-radius: 14px;
+  padding: 20px;
+  margin-top: 15px;
+  backdrop-filter: blur(10px);
   text-align: left;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
 }
 
-.dropdown a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  padding: 8px 10px;
-  font-size: 14px;
-  transition: 0.2s;
-}
-
-.dropdown a:hover {
-  background: #3a3a3a;
-  border-radius: 4px;
-}
-
-/* Show Dropdown When Active */
-.show-dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(5px);
-}
-
-/* Title Styling */
-.title {
-  font-family: "Playfair Display", serif;
-  font-size: 28px;
-  font-weight: 600;
-  color: black;
-  background: linear-gradient(to right, gold, white);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Scrollable Section */
-.scroll-container {
-  max-height: 85vh;
-  overflow-y: auto;
-  padding: 10px;
-  border-radius: 8px;
-}
-
-/* Model Info */
-.model-info {
-  font-size: 16px;
-  margin: 10px 0;
-  font-weight: bold;
-}
-
-/* Section Styling */
-.text-section {
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-.text-section h3 {
-  font-size: 18px;
-  color: gold;
-  border-bottom: 2px solid gold;
-  padding-bottom: 5px;
+.preset-content h3 {
+  color: #ffdf80;
   margin-bottom: 10px;
 }
 
-/* Text Box Container */
+/* === TEXT BOXES === */
 .text-box-container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 5px 0;
+  align-items: flex-start;
+  margin-bottom: 15px;
 }
 
-/* Text Areas */
 .text-area {
-  width: 75%;
-  padding: 10px;
-  font-size: 14px;
-  resize: none;
-  border: 1px solid #555;
-  border-radius: 5px;
-  background: #2c2c2c;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
   color: #fff;
-  outline: none;
-}
-
-.text-area::placeholder {
-  color: #bbb;
-}
-
-/* Set fixed height for preview boxes */
-.preview-text {
-  height: 3em;
-  overflow: hidden;
-  background: #2c2c2c;
-}
-
-/* Copy Button */
-.copy-btn {
-  width: 20%;
-  padding: 10px;
+  padding: 12px;
+  border-radius: 10px;
   font-size: 14px;
-  background-color: #4CAF50;
-  color: white;
+  resize: vertical;
+  font-family: "Poppins", sans-serif;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.text-area:focus {
+  outline: none;
+  border-color: #ffd700;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.text-area.small {
+  height: 80px;
+  overflow: hidden;
+}
+
+.text-area.dynamic {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* === COPY BUTTON === */
+.copy-btn {
+  margin-left: 10px;
+  background: linear-gradient(90deg, #ffcc00, #ffaa00);
+  color: #1f0033;
   border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
-  border-radius: 5px;
-  transition: 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(255, 215, 0, 0.4);
 }
 
 .copy-btn:hover {
-  background-color: #45a049;
-  transform: scale(1.05);
+  background: linear-gradient(90deg, #ffe066, #ffb700);
+  transform: translateY(-2px);
 }
 
-/* Predict Button */
+/* === CUSTOM INPUT SECTION === */
+.custom-input-container {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.title {
+  color: #ffdf80;
+  margin-bottom: 8px;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.note {
+  color: #d4bfff;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+/* === PREDICT BUTTON === */
 .predict-btn {
-  background: linear-gradient(90deg, #ff9f00, #ff2d55);
+  margin-top: 14px;
+  background: linear-gradient(90deg, #9d50bb, #6e48aa);
   color: #fff;
-  padding: 12px;
-  font-size: 18px;
-  font-weight: bold;
+  padding: 12px 20px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  font-size: 1rem;
   cursor: pointer;
+  font-weight: 500;
   transition: all 0.3s ease;
-}
-
-.predict-btn:disabled {
-  background: #555;
-  cursor: not-allowed;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .predict-btn:hover {
-  background: linear-gradient(90deg, #ff7800, #ff1d45);
+  background: linear-gradient(90deg, #b87fff, #7b2ff7);
+  transform: translateY(-2px);
 }
 
-/* Error Message */
+/* === FEEDBACK TEXTS === */
 .error-text {
-  color: red;
-  font-size: 14px;
+  color: #ff6b6b;
   margin-top: 10px;
+  font-weight: 500;
 }
 
-/* Prediction Result */
 .result-text {
-  font-size: 18px;
-  font-weight: 500;
-  color: gold;
-  margin-top: 15px;
+  color: #9effa0;
+  font-weight: 600;
+  margin-top: 12px;
+  font-size: 1.1rem;
+  text-shadow: 0 0 6px rgba(158, 255, 160, 0.5);
 }
