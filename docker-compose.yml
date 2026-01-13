@@ -1,0 +1,28 @@
+services:
+  backend:
+    build: ./backend
+    container_name: ai-backend
+    ports:
+      - "5149:5149"
+    # We do not map ports here so it is NOT accessible from your Mac
+    # It is only accessible via 'backend:port' within the docker network
+    environment:
+      - NODE_ENV=production
+    networks:
+      - ai-network
+
+  frontend:
+    build: ./frontend
+    container_name: ai-frontend
+    ports:
+      - "3000:3000" # Map React's port to your Mac
+    stdin_open: true # Required for React dev server to stay alive
+    tty: true
+    depends_on:
+      - backend
+    networks:
+      - ai-network
+
+networks:
+  ai-network:
+    driver: bridge
