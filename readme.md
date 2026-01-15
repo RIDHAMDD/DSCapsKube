@@ -1,7 +1,32 @@
-# Backend
+# AI Content Detector
 
-go to backend and on terminal hit "node server.js"
+This project contains a backend and frontend for detecting AI-generated content. Both services are dockerized, and can be easily run using Docker Compose.
 
-# Frontend
+## Prerequisites
 
-then in frontend go run "npm start"
+- Docker installed
+- Docker Compose installed
+
+---
+
+## Quick Start
+
+### 1. Build the Docker containers
+
+From the project root (where `docker-compose.yml` is located), run:
+
+```
+docker-compose build
+```
+### Start the services
+
+To start both backend and frontend containers:
+```
+docker-compose up
+```
+### Stop the services
+
+To stop and remove the containers:
+```
+docker-compose down
+```
