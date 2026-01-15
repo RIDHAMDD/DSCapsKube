@@ -19,7 +19,7 @@
       setLoading(true);
       setError("");
       setResult(null);
-  
+  //testing if commit works
       try {
         const response = await axios.post("http://localhost:5149/predict", {
           model_name: "Multinomial Naive Bayes",
