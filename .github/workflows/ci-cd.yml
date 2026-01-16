@@ -16,8 +16,7 @@ jobs:
         uses: tailscale/github-action@v3
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_ID }}
-          oauth-client-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          tags: tag:ci # Optional: allows you to apply specific ACL rules to the runner
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }} # Removed "-client" from the name
 
       # 2. Setup Docker for ARM64 builds
       - name: Set up QEMU
