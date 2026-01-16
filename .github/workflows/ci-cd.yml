@@ -12,10 +12,12 @@ jobs:
         uses: actions/checkout@v4
 
       # 1. Connect to your private Pi network
-      - name: Tailscale
+      - name: Connect to Tailscale
         uses: tailscale/github-action@v3
         with:
-          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+          oauth-client-id: ${{ secrets.TS_OAUTH_ID }}
+          oauth-client-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:ci # Optional: allows you to apply specific ACL rules to the runner
 
       # 2. Setup Docker for ARM64 builds
       - name: Set up QEMU
