@@ -21,7 +21,7 @@
       setResult(null);
   //testing if commit works
       try {
-        const response = await axios.post("http://localhost:5149/predict", {
+        const response = await axios.post("http://detector-backend-service:5149/predict", {
           model_name: "Multinomial Naive Bayes",
           content: text,
         });

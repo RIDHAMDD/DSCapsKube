@@ -1,0 +1,58 @@
+name: Build and Deploy to K3s
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 1. Connect to your private Pi network
+      - name: Tailscale
+        uses: tailscale/github-action@v3
+        with:
+          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
+
+      # 2. Setup Docker for ARM64 builds
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build Backend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend # Adjust if your folder structure is different
+          platforms: linux/arm64
+          push: true
+          tags: ridham6422/ai-content-detector-backend:latest
+
+      - name: Build Frontend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend # Adjust if your folder structure is different
+          platforms: linux/arm64
+          push: true
+          tags: ridham6422/ai-content-detector-frontend:latest
+
+      - name: Deploy to K3s
+        uses: azure/k8s-set-context@v3
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+
+      - name: Refresh Pods
+        run: |
+          kubectl rollout restart deployment/detector-backend
+          kubectl rollout restart deployment/detector-frontend
