@@ -22,6 +22,7 @@ jobs:
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }} # Removed "-client" from the name
+          tags: tag:ci
 
       # 2. Setup Docker for ARM64 builds
       - name: Set up QEMU
