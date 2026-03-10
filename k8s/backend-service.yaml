@@ -21,4 +21,9 @@ spec:
   selector:
     app: detector-backend
   sessionAffinity: None
-  type: ClusterIP
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 5149
+      targetPort: 5149
+      nodePort: 30149
