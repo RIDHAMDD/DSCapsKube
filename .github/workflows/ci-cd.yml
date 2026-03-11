@@ -38,3 +38,16 @@ jobs:
           platforms: linux/arm64
           push: true
           tags: ridham6422/ai-content-detector-frontend:latest
+        
+      - name: Deploy to Pi
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.PI_HOST }}
+          username: ${{ secrets.PI_USER }}
+          key: ${{ secrets.PI_SSH_KEY }}
+          proxy_host: ${{ secrets.PROXY_HOST }}
+          proxy_username: ${{ secrets.PROXY_USER }}
+          proxy_key: ${{ secrets.PI_SSH_KEY }}
+          script: |
+            kubectl rollout restart deployment/detector-frontend -n default
+            kubectl rollout restart deployment/detector-backend -n default
