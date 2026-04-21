@@ -21,7 +21,7 @@
       setResult(null);
       //push
       try {
-        const response = await axios.post("http://localhost:30149/predict", {
+        const response = await axios.post("/api/predict", {
           model_name: "Multinomial Naive Bayes",
           content: text,
         });
